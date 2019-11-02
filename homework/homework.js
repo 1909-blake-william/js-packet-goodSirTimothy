@@ -10,14 +10,14 @@
 // 1. Fibonacci
 // Define function: fib(n)
 // Return the nth number in the fibonacci sequence.
-function fib(n){
+function fib(n) {
     let currentNum = 1;
     let lastNum = 0;
     let result = 0;
-    if(n<=1){
+    if (n <= 1) {
         return n;
     }
-    for(i = 0; i < n; i++){
+    for (i = 0; i < n; i++) {
         result = lastNum + currentNum;
         lastNum = currentNum;
         currentNum = result;
@@ -31,23 +31,37 @@ function fib(n){
 // Define function: bubbleSort(numArray)
 // Use the bubble sort algorithm to sort the array.
 // Return the sorted array.
-function bubbleSort(numArray){
-
+function bubbleSort(numArray) {
+    console.log(numArray)
+    for (i = 0; i < numArray.length; i++) {
+        for(j = i; j < numArray.length; j++){
+            if(numArray[i] > numArray[j]){
+                let holder = numArray[i];
+                numArray[i] = numArray[j];
+                numArray[j] = holder;
+            }
+        }
+    }
+    console.log(numArray)
 }
 
 
 // 3. Reverse String
 // Define function: reverseStr(someStr)
 // Reverse and return the String.
-function reverseStr(someStr){
-
+function reverseStr(someStr) {
+    let reverseString = '';
+    for( i = (someStr.length - 1); i >= 0; i--){
+        reverseString = reverseString + someStr.charAt(i);
+    }
+    console.log(reverseString);
 }
 
 
 // 4. Factorial
 // Define function: factorial(someNum)
 // Use recursion to compute and return the factorial of someNum.
-function factorial(someNum){
+function factorial(someNum) {
 
 }
 
@@ -65,14 +79,14 @@ substring(someStr, length, offset){
 // Define function: isEven(someNum)
 // Return true if even, false if odd.
 // Do not use % operator.
-function isEven(someNum){
+function isEven(someNum) {
 
 }
 
 // 7. Palindrome
 // Define function isPalindrome(someStr)
 // Return true if someStr is a palindrome, otherwise return false
-function isPalindrome(someStr){
+function isPalindrome(someStr) {
 
 }
 
@@ -97,7 +111,7 @@ function isPalindrome(someStr){
 // *****
 //  ***
 //   *
-function printShape(shape, height, character){
+function printShape(shape, height, character) {
 
 }
 
@@ -105,7 +119,7 @@ function printShape(shape, height, character){
 // 9. Object literal
 // Define function traverseObject(someObj)
 // Print every property and it's value.
-function traverseObject(someObj){
+function traverseObject(someObj) {
 
 }
 
@@ -116,7 +130,7 @@ function traverseObject(someObj){
 // Delete the third element in the array.
 // Print length
 // The lengths should be the same.
-function deleteElement(someArr){
+function deleteElement(someArr) {
 
 }
 
@@ -127,7 +141,7 @@ function deleteElement(someArr){
 // Splice the third element in the array.
 // Print length
 // The lengths should be one less than the original length.
-function spliceElement(someArr){
+function spliceElement(someArr) {
 
 }
 
@@ -136,7 +150,7 @@ function spliceElement(someArr){
 // Define a function Person(name, age)
 // The following line should set a Person object to the variable john:
 // 	let john = new Person("John", 30);
-function Person(name, age){
+function Person(name, age) {
 
 }
 
@@ -144,6 +158,6 @@ function Person(name, age){
 // Define function getPerson(name, age)
 // The following line should set a Person object to the variable john:
 // 	let john = getPerson("John", 30);
-function getPerson(name, age){
+function getPerson(name, age) {
 
 }
