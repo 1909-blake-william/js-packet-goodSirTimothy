@@ -54,7 +54,7 @@ function reverseStr(someStr) {
     for( i = (someStr.length - 1); i >= 0; i--){
         reverseString = reverseString + someStr.charAt(i);
     }
-    console.log(reverseString);
+    return reverseString;
 }
 
 
@@ -62,7 +62,14 @@ function reverseStr(someStr) {
 // Define function: factorial(someNum)
 // Use recursion to compute and return the factorial of someNum.
 function factorial(someNum) {
-
+    if(someNum <= 1){
+        return someNum;
+    }
+    let result = 1;
+    for(i = 1; i <= someNum; i++){
+        result = result * i;
+    }
+    return result;
 }
 
 
@@ -70,8 +77,17 @@ function factorial(someNum) {
 // Define function substring(someStr, length, offset)
 // Return the substring contained between offset and (offset + length) inclusively.
 // If incorrect input is entered, use the alert function and describe why the input was incorrect.
-substring(someStr, length, offset){
-
+function substring(someStr, length, offset){
+    if(length > someStr.length){
+        alert(`length cannot be greater then the String ${someStr.length}`);
+    } else if(offset > length){
+        alert(`offset cannot be greater then the length ${length}`);
+    } else if (offset < 0 || length < 0){
+        alert(`number cannot be less the 0`);
+    } else {
+        return someStr.substring(offset, length);
+    }
+    return '0';
 }
 
 
