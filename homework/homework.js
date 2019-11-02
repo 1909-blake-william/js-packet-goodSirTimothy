@@ -22,7 +22,6 @@ function fib(n) {
         lastNum = currentNum;
         currentNum = result;
     }
-    console.log(currentNum);
     return currentNum;
 }
 
@@ -32,7 +31,6 @@ function fib(n) {
 // Use the bubble sort algorithm to sort the array.
 // Return the sorted array.
 function bubbleSort(numArray) {
-    console.log(numArray)
     for (i = 0; i < numArray.length; i++) {
         for(j = i; j < numArray.length; j++){
             if(numArray[i] > numArray[j]){
@@ -42,7 +40,7 @@ function bubbleSort(numArray) {
             }
         }
     }
-    console.log(numArray)
+    return numArray;
 }
 
 
@@ -96,7 +94,14 @@ function substring(someStr, length, offset){
 // Return true if even, false if odd.
 // Do not use % operator.
 function isEven(someNum) {
-
+    while(someNum > 1){
+        someNum = someNum - 2;
+    }
+    if(someNum == 0){
+        return true;
+    } else {
+        return false;
+    }
 }
 
 // 7. Palindrome
