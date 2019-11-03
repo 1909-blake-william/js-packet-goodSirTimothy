@@ -10,6 +10,10 @@
 // 1. Fibonacci
 // Define function: fib(n)
 // Return the nth number in the fibonacci sequence.
+/**
+ * 
+ * @param {*} n 
+ */
 function fib(n) {
     let currentNum = 1;
     let lastNum = 0;
@@ -30,6 +34,10 @@ function fib(n) {
 // Define function: bubbleSort(numArray)
 // Use the bubble sort algorithm to sort the array.
 // Return the sorted array.
+/**
+ * 
+ * @param {*} numArray 
+ */
 function bubbleSort(numArray) {
     for (i = 0; i < numArray.length; i++) {
         for (j = i; j < numArray.length; j++) {
@@ -47,6 +55,10 @@ function bubbleSort(numArray) {
 // 3. Reverse String
 // Define function: reverseStr(someStr)
 // Reverse and return the String.
+/**
+ * 
+ * @param {*} someStr 
+ */
 function reverseStr(someStr) {
     let reverseString = '';
     for (i = (someStr.length - 1); i >= 0; i--) {
@@ -59,6 +71,10 @@ function reverseStr(someStr) {
 // 4. Factorial
 // Define function: factorial(someNum)
 // Use recursion to compute and return the factorial of someNum.
+/**
+ * 
+ * @param {*} someNum 
+ */
 function factorial(someNum) {
     if (someNum <= 1) {
         return someNum;
@@ -75,6 +91,12 @@ function factorial(someNum) {
 // Define function substring(someStr, length, offset)
 // Return the substring contained between offset and (offset + length) inclusively.
 // If incorrect input is entered, use the alert function and describe why the input was incorrect.
+/**
+ * 
+ * @param {*} someStr 
+ * @param {*} length 
+ * @param {*} offset 
+ */
 function substring(someStr, length, offset) {
     if (length > someStr.length) {
         alert(`length cannot be greater then the String ${someStr.length}`);
@@ -93,6 +115,10 @@ function substring(someStr, length, offset) {
 // Define function: isEven(someNum)
 // Return true if even, false if odd.
 // Do not use % operator.
+/**
+ * 
+ * @param {*} someNum 
+ */
 function isEven(someNum) {
     while (someNum > 1) {
         someNum = someNum - 2;
@@ -107,6 +133,14 @@ function isEven(someNum) {
 // 7. Palindrome
 // Define function isPalindrome(someStr)
 // Return true if someStr is a palindrome, otherwise return false
+/**
+ * I am assuming that a word or sentice does not have ponctuation OR capital letters. 
+ * So writing 
+ * "a hi ih a" == true
+ * "a hi, ih a" == false
+ * "a hi iH a" == false
+ * @param {*} someStr 
+ */
 function isPalindrome(someStr) {
     // remove spaces
     for (i = 0; i < someStr; i++) {
@@ -147,35 +181,126 @@ function isPalindrome(someStr) {
 // *****
 //  ***
 //   *
+/**
+ * I have split this task into seperate functions depending on which shape to print
+ * @param {*} shape = the shape meant to be printed
+ * @param {*} height = the dimensions of the object. 5 = 5x5
+ * @param {*} character = the character to fill in the shape
+ */
 function printShape(shape, height, character) {
     if (shape === 'Square') {
-
+        // print out a square
+        console.log(printSquare(height, character));
     } else if (shape === 'Triangle') {
-
+        // print out a Triangle
+        console.log(printTriangle(height, character));
     } else if (shape === 'Diamond') {
-
+        // print out an error (since it is easier to display a diamond for an odd number)
+        if (height % 2 === 0) {
+            console.log('please input an odd number for a Diamond')
+        } else {
+            // print out a Diamond
+            console.log(printDiamond(height, character));
+        }
     } else {
         console.log('sorry, not a valid shape')
     }
 }
 
-function printSquare(height, character){
-
+/**
+ * function for square logic
+ * @param {*} height 
+ * @param {*} character 
+ */
+function printSquare(height, character) {
+    let shape = '';
+    for (i = 0; i < height; i++) {
+        shape = shape + ' ';            // Insert a space to aline the suare with the diamond
+        for (j = 0; j < height; j++) {
+            shape = shape + character;
+        }
+        shape = shape + ' \n';
+    }
+    return shape;
 }
 
-function printTriangle(height, character){
-
+/**
+ * function for triangle logic (right angle only)
+ * @param {*} height 
+ * @param {*} character 
+ */
+function printTriangle(height, character) {
+    let shape = '';
+    for (i = 0; i < height; i++) {
+        shape = shape + ' ';            // Insert a space to aline the triangle with the diamond
+        for (j = 0; j < i + 1; j++) {
+            shape = shape + character;
+        }
+        shape = shape + ' \n';
+    }
+    return shape;
 }
 
-function printDiamond(height, character){
+/**
+ * function for Diamond logic
+ * @param {*} height 
+ * @param {*} character 
+ */
+function printDiamond(height, character) {
+    let shape = '';
+    let halfwayPoint = (height - 1) / 2;
+    let countDownStart = false;
+    let count = 0;
 
+    for (i = 0; i < height; i++) {
+        numOfSpaces = halfwayPoint - count;
+
+        // spaces before character
+        for (j = 0; j < numOfSpaces + 1; j++) {
+            shape = shape + ' ';
+        }
+        // print the character
+        for (j = 0; j < (halfwayPoint + 1 + count) - (numOfSpaces); j++) {
+            shape = shape + 'X';
+        }
+        /*// This code makes an interesting shape and I really don't want to forget about it. 
+          // shape = <
+        for (j = 0; j < (halfwayPoint + 1) - (numOfSpaces + count); j++) { shape = shape + 'X'; }*/
+
+        // spaces after character
+        for (j = 0; j < numOfSpaces + 1; j++) {
+            shape = shape + ' ';
+        }
+        // check for when the buttom of the diamond has been hit. 
+        if(!countDownStart){
+            count++;
+            if(count > halfwayPoint){
+                countDownStart = true;
+                count = count - 2;
+            }
+        } else {
+            count--;
+        }
+        shape = shape + '\n';
+    }
+    return shape;
 }
+
+printShape('Square', 5, 'X');
+printShape('Triangle', 5, 'X');
+printShape('Diamond', 5, 'X');
+
 
 
 // 9. Object literal
 // Define function traverseObject(someObj)
 // Print every property and it's value.
+/**
+ * 
+ * @param {*} someObj 
+ */
 function traverseObject(someObj) {
+    // assuming we just want to print the object to the console
     console.log(someObj);
 }
 
@@ -186,14 +311,20 @@ function traverseObject(someObj) {
 // Delete the third element in the array.
 // Print length
 // The lengths should be the same.
+/**
+ * 
+ * @param {*} someArr 
+ */
 function deleteElement(someArr) {
     console.log(`Length of the array: ${someArr.length}`);
+    // print array before "deleting" element
     console.log(someArr);
     if (someArr.length >= 3) {
         // assuming 'third element' = the second index. Also assuming that undefined = deleted element.
         someArr[2] = undefined;
     }
     console.log(`Length of the array: ${someArr.length}`);
+    // print array after "deleting" element
     console.log(someArr);
 }
 
@@ -204,14 +335,20 @@ function deleteElement(someArr) {
 // Splice the third element in the array.
 // Print length
 // The lengths should be one less than the original length.
+/**
+ * 
+ * @param {*} someArr 
+ */
 function spliceElement(someArr) {
     console.log(`Length of the array: ${someArr.length}`);
+    // print array before splicing element
     console.log(someArr);
     if (someArr.length >= 3) {
         // assuming 'third element' = the second index
         someArr = someArr.splice(2, 1);;
     }
     console.log(`Length of the array: ${someArr.length}`);
+    // print array before splicing element
     console.log(someArr);
 }
 
@@ -220,6 +357,11 @@ function spliceElement(someArr) {
 // Define a function Person(name, age)
 // The following line should set a Person object to the variable john:
 // 	let john = new Person("John", 30);
+/**
+ * 
+ * @param {*} name 
+ * @param {*} age 
+ */
 function Person(name, age) {
     this.name = name;
     this.age = age;
@@ -231,9 +373,14 @@ let john = new Person("John", 30);
 // Define function getPerson(name, age)
 // The following line should set a Person object to the variable john:
 // 	let john = getPerson("John", 30);
+/**
+ * 
+ * @param {*} name 
+ * @param {*} age 
+ */
 function getPerson(name, age) {
     let person = {
-        objAge : age,
+        objAge: age,
         objName: name,
     };
     return person;
