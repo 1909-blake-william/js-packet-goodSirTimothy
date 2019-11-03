@@ -32,8 +32,8 @@ function fib(n) {
 // Return the sorted array.
 function bubbleSort(numArray) {
     for (i = 0; i < numArray.length; i++) {
-        for(j = i; j < numArray.length; j++){
-            if(numArray[i] > numArray[j]){
+        for (j = i; j < numArray.length; j++) {
+            if (numArray[i] > numArray[j]) {
                 let holder = numArray[i];
                 numArray[i] = numArray[j];
                 numArray[j] = holder;
@@ -49,7 +49,7 @@ function bubbleSort(numArray) {
 // Reverse and return the String.
 function reverseStr(someStr) {
     let reverseString = '';
-    for( i = (someStr.length - 1); i >= 0; i--){
+    for (i = (someStr.length - 1); i >= 0; i--) {
         reverseString = reverseString + someStr.charAt(i);
     }
     return reverseString;
@@ -60,11 +60,11 @@ function reverseStr(someStr) {
 // Define function: factorial(someNum)
 // Use recursion to compute and return the factorial of someNum.
 function factorial(someNum) {
-    if(someNum <= 1){
+    if (someNum <= 1) {
         return someNum;
     }
     let result = 1;
-    for(i = 1; i <= someNum; i++){
+    for (i = 1; i <= someNum; i++) {
         result = result * i;
     }
     return result;
@@ -75,12 +75,12 @@ function factorial(someNum) {
 // Define function substring(someStr, length, offset)
 // Return the substring contained between offset and (offset + length) inclusively.
 // If incorrect input is entered, use the alert function and describe why the input was incorrect.
-function substring(someStr, length, offset){
-    if(length > someStr.length){
+function substring(someStr, length, offset) {
+    if (length > someStr.length) {
         alert(`length cannot be greater then the String ${someStr.length}`);
-    } else if(offset > length){
+    } else if (offset > length) {
         alert(`offset cannot be greater then the length ${length}`);
-    } else if (offset < 0 || length < 0){
+    } else if (offset < 0 || length < 0) {
         alert(`number cannot be less the 0`);
     } else {
         return someStr.substring(offset, length);
@@ -94,10 +94,10 @@ function substring(someStr, length, offset){
 // Return true if even, false if odd.
 // Do not use % operator.
 function isEven(someNum) {
-    while(someNum > 1){
+    while (someNum > 1) {
         someNum = someNum - 2;
     }
-    if(someNum == 0){
+    if (someNum == 0) {
         return true;
     } else {
         return false;
@@ -109,21 +109,21 @@ function isEven(someNum) {
 // Return true if someStr is a palindrome, otherwise return false
 function isPalindrome(someStr) {
     // remove spaces
-    for(i = 0; i < someStr; i++){
+    for (i = 0; i < someStr; i++) {
         let letter = someStr.charAt(i);
-        if(letter === ' '){
+        if (letter === ' ') {
             someStr = someStr.replace(' ', '');
             i--;
         }
     }
 
     let someStrRev = reverseStr(someStr);
-    for(i = 0; i < someStr.length; i++){
-        if(someStr[i] != someStrRev[i]){
+    for (i = 0; i < someStr.length; i++) {
+        if (someStr[i] != someStrRev[i]) {
             return false;
         }
     }
-return true;
+    return true;
 }
 
 // 8. Shapes
@@ -148,15 +148,27 @@ return true;
 //  ***
 //   *
 function printShape(shape, height, character) {
-    if(shape === ''){
+    if (shape === 'Square') {
 
-    } else if (shape === ''){
+    } else if (shape === 'Triangle') {
 
-    } else if (shape === ''){
+    } else if (shape === 'Diamond') {
 
     } else {
         console.log('sorry, not a valid shape')
     }
+}
+
+function printSquare(height, character){
+
+}
+
+function printTriangle(height, character){
+
+}
+
+function printDiamond(height, character){
+
 }
 
 
@@ -177,7 +189,7 @@ function traverseObject(someObj) {
 function deleteElement(someArr) {
     console.log(`Length of the array: ${someArr.length}`);
     console.log(someArr);
-    if(someArr.length >= 3){
+    if (someArr.length >= 3) {
         // assuming 'third element' = the second index. Also assuming that undefined = deleted element.
         someArr[2] = undefined;
     }
@@ -195,7 +207,7 @@ function deleteElement(someArr) {
 function spliceElement(someArr) {
     console.log(`Length of the array: ${someArr.length}`);
     console.log(someArr);
-    if(someArr.length >= 3){
+    if (someArr.length >= 3) {
         // assuming 'third element' = the second index
         someArr = someArr.splice(2, 1);;
     }
@@ -209,13 +221,21 @@ function spliceElement(someArr) {
 // The following line should set a Person object to the variable john:
 // 	let john = new Person("John", 30);
 function Person(name, age) {
-
+    this.name = name;
+    this.age = age;
 }
+
+let john = new Person("John", 30);
 
 // 13. Defining an object using an object literal
 // Define function getPerson(name, age)
 // The following line should set a Person object to the variable john:
 // 	let john = getPerson("John", 30);
 function getPerson(name, age) {
-
+    let person = {
+        objAge : age,
+        objName: name,
+    };
+    return person;
 }
+let john = getPerson("John", 30);
