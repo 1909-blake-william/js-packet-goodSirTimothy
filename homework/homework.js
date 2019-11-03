@@ -108,7 +108,22 @@ function isEven(someNum) {
 // Define function isPalindrome(someStr)
 // Return true if someStr is a palindrome, otherwise return false
 function isPalindrome(someStr) {
+    // remove spaces
+    for(i = 0; i < someStr; i++){
+        let letter = someStr.charAt(i);
+        if(letter === ' '){
+            someStr = someStr.replace(' ', '');
+            i--;
+        }
+    }
 
+    let someStrRev = reverseStr(someStr);
+    for(i = 0; i < someStr.length; i++){
+        if(someStr[i] != someStrRev[i]){
+            return false;
+        }
+    }
+return true;
 }
 
 // 8. Shapes
