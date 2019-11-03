@@ -148,7 +148,15 @@ return true;
 //  ***
 //   *
 function printShape(shape, height, character) {
+    if(shape === ''){
 
+    } else if (shape === ''){
+
+    } else if (shape === ''){
+
+    } else {
+        console.log('sorry, not a valid shape')
+    }
 }
 
 
@@ -156,7 +164,7 @@ function printShape(shape, height, character) {
 // Define function traverseObject(someObj)
 // Print every property and it's value.
 function traverseObject(someObj) {
-
+    console.log(someObj);
 }
 
 
@@ -167,7 +175,14 @@ function traverseObject(someObj) {
 // Print length
 // The lengths should be the same.
 function deleteElement(someArr) {
-
+    console.log(`Length of the array: ${someArr.length}`);
+    console.log(someArr);
+    if(someArr.length >= 3){
+        // assuming 'third element' = the second index. Also assuming that undefined = deleted element.
+        someArr[2] = undefined;
+    }
+    console.log(`Length of the array: ${someArr.length}`);
+    console.log(someArr);
 }
 
 
@@ -178,7 +193,14 @@ function deleteElement(someArr) {
 // Print length
 // The lengths should be one less than the original length.
 function spliceElement(someArr) {
-
+    console.log(`Length of the array: ${someArr.length}`);
+    console.log(someArr);
+    if(someArr.length >= 3){
+        // assuming 'third element' = the second index
+        someArr = someArr.splice(2, 1);;
+    }
+    console.log(`Length of the array: ${someArr.length}`);
+    console.log(someArr);
 }
 
 
