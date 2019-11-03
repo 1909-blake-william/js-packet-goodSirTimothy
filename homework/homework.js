@@ -272,9 +272,9 @@ function printDiamond(height, character) {
             shape = shape + ' ';
         }
         // check for when the buttom of the diamond has been hit. 
-        if(!countDownStart){
+        if (!countDownStart) {
             count++;
-            if(count > halfwayPoint){
+            if (count > halfwayPoint) {
                 countDownStart = true;
                 count = count - 2;
             }
@@ -375,7 +375,7 @@ let john = new Person("John", 30);
 // 	let john = getPerson("John", 30);
 /**
  * 
- * @param {*} name 
+ * @param {*} name
  * @param {*} age 
  */
 function getPerson(name, age) {
