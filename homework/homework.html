@@ -106,7 +106,9 @@
     // Find the html element that contains "USA" in the data-customAttr.
     // Print that element's contents.
     function getUSA() {
-
+      document.querySelectorAll('[data-customAttr="USA"]').forEach(usaContents => {
+        console.log(usaContents.innerText);
+      });
     }
 
 
@@ -114,7 +116,12 @@
     // Define function getPeopleInSales()
     // Print the names of all the people in the sales department.
     function getPeopleInSales() {
-
+      let tdArray = document.querySelectorAll('td');
+      for(i = 0; i < tdArray.length; i = i+2){
+        if(tdArray[i+1].innerText === 'Sales'){
+          console.log(tdArray[i].innerText + ', Dept: ' + tdArray[i+1].innerText);
+        }
+      }
     }
 
     // 3. Click Here
@@ -157,7 +164,10 @@
     // When user selects a skill, create an alert with a message similar to:
     // 	"Are you sure CSS is one of your skills?"
     // NOTE: no alert should appear when user deselects a skill.
-
+    function selected() {
+      document.getElementsByName("cards").values();
+      console.log('selected');
+    }
 
     // 8. Favorite Color Event
     // NOTE: This is regarding the favoriteColor radio buttons.
