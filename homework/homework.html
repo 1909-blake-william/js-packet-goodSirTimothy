@@ -129,7 +129,7 @@
     // Find all anchor elements with a <span> child.
     // Print the contents of <span>
     function getAnchorChildren() {
-
+      document.querySelectorAll('a').
     }
 
     // 4. Hobbies
@@ -146,7 +146,9 @@
     // Print the value of the attribute.
     // Print the element that has the attribute.
     function getCustomAttribute() {
-
+      document.querySelectorAll('[data-customAttr]').forEach(usaContents => {
+        console.log(usaContents.innerText);
+      });
     }
 
     // 6. Sum Event
