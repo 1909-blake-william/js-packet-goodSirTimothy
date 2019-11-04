@@ -129,7 +129,10 @@
     // Find all anchor elements with a <span> child.
     // Print the contents of <span>
     function getAnchorChildren() {
-      document.querySelectorAll('a').
+      let allSpan = document.querySelectorAll('a > span');
+      for(i = 0; i < allSpan.length; i++){
+        console.log(allSpan[i].innerText);
+      }
     }
 
     // 4. Hobbies
@@ -160,7 +163,23 @@
     // Add <input> element values.
     // Put the sum in the <span> element.
     // If values cannot be added, put "Cannot add" in the <span> element
+    let num1 = document.getElementById('num1');
+    let num2 = document.getElementById('num2');
+    num1.addEventListener('keyup', test => {
+      let sum = document.getElementById('sum');
+      console.log(num1.value);
+      sum.innerHTML = `${num1.value} + ${num2.value} = ${num1.value + num2.value}`;
+    });
+    num2.addEventListener('keyup', event => {
+      let sum = document.getElementById('sum');
+      let result = Number(num1.value) + Number(num2.value);
+      console.log(num1.value);
+      sum.innerHTML = `${num1.value} + ${num2.value} = ${num1.value + num2.value}`;
+    });
+    //l.innerHTML('test')
 
+    document.getElementById('firstForm').childNodes.length
+    document.getElementsByClassName('nums').childNodes
 
     // 7. Skills Event
     // When user selects a skill, create an alert with a message similar to:

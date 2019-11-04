@@ -300,7 +300,6 @@ printShape('Diamond', 5, 'X');
  * @param {*} someObj 
  */
 function traverseObject(someObj) {
-    // assuming we just want to print the object to the console
     console.log(someObj);
 }
 
