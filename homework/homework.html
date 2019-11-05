@@ -171,7 +171,7 @@
     num1.addEventListener('keyup', test => {
       let sum = document.getElementById('sum');
       let result = Number(num1.value) + Number(num2.value);
-      if (Number.isNaN(result)){
+      if (Number.isNaN(result)) {
         sum.innerHTML = `Cannot add`;
       } else {
         sum.innerHTML = `${num1.value} + ${num2.value} = ${result}`;
@@ -181,7 +181,7 @@
     num2.addEventListener('keyup', event => {
       let sum = document.getElementById('sum');
       let result = Number(num1.value) + Number(num2.value);
-      if (Number.isNaN(result)){
+      if (Number.isNaN(result)) {
         sum.innerHTML = `Cannot add`;
       } else {
         sum.innerHTML = `${num1.value} + ${num2.value} = ${result}`;
@@ -195,10 +195,16 @@
     // When user selects a skill, create an alert with a message similar to:
     // 	"Are you sure CSS is one of your skills?"
     // NOTE: no alert should appear when user deselects a skill.
-    function selected() {
-      document.getElementsByName("cards").values();
-      console.log('selected');
-    }
+
+    let selection = document.getElementsByName('skills')
+    let oldSelection = selection[0].selectedOptions[0].innerHTML;
+    addEventListener("click", test => {
+      if (oldSelection !== selection[0].selectedOptions[0].innerHTML) {
+        newSelection = selection[0].selectedOptions[0].innerHTML;
+        alert(`Are you sure ${newSelection} is one of your skills?`);
+        oldSelection = newSelection;
+      }
+    });
 
     // 8. Favorite Color Event
     // NOTE: This is regarding the favoriteColor radio buttons.
