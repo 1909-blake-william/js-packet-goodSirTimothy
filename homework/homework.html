@@ -117,9 +117,9 @@
     // Print the names of all the people in the sales department.
     function getPeopleInSales() {
       let tdArray = document.querySelectorAll('td');
-      for(i = 0; i < tdArray.length; i = i+2){
-        if(tdArray[i+1].innerText === 'Sales'){
-          console.log(tdArray[i].innerText + ', Dept: ' + tdArray[i+1].innerText);
+      for (i = 0; i < tdArray.length; i = i + 2) {
+        if (tdArray[i + 1].innerText === 'Sales') {
+          console.log(tdArray[i].innerText + ', Dept: ' + tdArray[i + 1].innerText);
         }
       }
     }
@@ -130,7 +130,7 @@
     // Print the contents of <span>
     function getAnchorChildren() {
       let allSpan = document.querySelectorAll('a > span');
-      for(i = 0; i < allSpan.length; i++){
+      for (i = 0; i < allSpan.length; i++) {
         console.log(allSpan[i].innerText);
       }
     }
@@ -140,7 +140,8 @@
     // Find all checked options in the 'skills' select element.
     // Print the value and the contents.
     function getHobbies() {
-
+      let selection = document.getElementsByName('skills')
+      console.log(selection[0].selectedOptions[0].innerHTML)
     }
 
     // 5. Custom Attribute
@@ -150,7 +151,8 @@
     // Print the element that has the attribute.
     function getCustomAttribute() {
       document.querySelectorAll('[data-customAttr]').forEach(usaContents => {
-        console.log(usaContents.innerText);
+        console.log(usaContents.valueOf()) // or usaContents.getAttributeNames()
+        console.log(usaContents.tagName); // or usaContents.localName
       });
     }
 
@@ -165,18 +167,26 @@
     // If values cannot be added, put "Cannot add" in the <span> element
     let num1 = document.getElementById('num1');
     let num2 = document.getElementById('num2');
+
     num1.addEventListener('keyup', test => {
       let sum = document.getElementById('sum');
-      console.log(num1.value);
-      sum.innerHTML = `${num1.value} + ${num2.value} = ${num1.value + num2.value}`;
+      let result = Number(num1.value) + Number(num2.value);
+      if (Number.isNaN(result)){
+        sum.innerHTML = `Cannot add`;
+      } else {
+        sum.innerHTML = `${num1.value} + ${num2.value} = ${result}`;
+      }
     });
+
     num2.addEventListener('keyup', event => {
       let sum = document.getElementById('sum');
       let result = Number(num1.value) + Number(num2.value);
-      console.log(num1.value);
-      sum.innerHTML = `${num1.value} + ${num2.value} = ${num1.value + num2.value}`;
+      if (Number.isNaN(result)){
+        sum.innerHTML = `Cannot add`;
+      } else {
+        sum.innerHTML = `${num1.value} + ${num2.value} = ${result}`;
+      }
     });
-    //l.innerHTML('test')
 
     document.getElementById('firstForm').childNodes.length
     document.getElementsByClassName('nums').childNodes
