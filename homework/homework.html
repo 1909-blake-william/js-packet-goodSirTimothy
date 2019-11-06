@@ -190,9 +190,6 @@
       }
     });
 
-    document.getElementById('firstForm').childNodes.length
-    document.getElementsByClassName('nums').childNodes
-
     // 7. Skills Event
     // When user selects a skill, create an alert with a message similar to:
     // 	"Are you sure CSS is one of your skills?"
@@ -214,21 +211,45 @@
     // In this example, green is the new value and blue is the old value.
     // Make the background color (of all favoriteColor radio buttons) the newly selected favoriteColor
     let favoriteColor = document.getElementsByName('favoriteColor');
-    console.log(favoriteColor[0].checked)
+    let oldColor = null;
+    addEventListener("click", test => {
+      for (i = 0; i < favoriteColor.length; i++) {
+        if(favoriteColor[i].checked){
+          if(oldColor === null){
+            oldColor = favoriteColor[i].value;
+          }else if(oldColor !== favoriteColor[i].value){
+            let newColor = favoriteColor[i].value;
+            alert(`What? You don't like ${oldColor} anymore? You're choosing to switch to ${newColor} as your favorite color?`);
+            oldColor = newColor;
+            changeBackground(favoriteColor, newColor)
+          } else {
+            oldColor = favoriteColor[i].value;
+          }
+        }
+      }
+    });
+
+    function changeBackground(favoriteColor, selectedColor){
+      for(i = 0; i < favoriteColor.length; i++){
+        favoriteColor[i].style.color=`${selectedColor}`;
+      }
+    }
 
     // 9. Show/Hide Event
     // When user hovers over an employees name:
     // 	Hide the name if shown.
     // 	Show the name if hidden.
     let empName = document.getElementsByClassName('empName');
-    console.log(empName[0].value)
+    console.log(empName[0].innerText)
 
     // 10. Current Time
     // Regarding this element:
     // 	<h5 id="currentTime"></h5>
     // Show the current time in this element in this format: 9:05:23 AM
     // The time should be accurate to the second without having to reload the page.
-
+    let time = newDate();
+    currentTime = document.getElementById('currentTime');
+    currentTime.innerText = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
 
     // 11. Delay
     // Regarding this element:
