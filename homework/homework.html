@@ -169,26 +169,24 @@
     let num2 = document.getElementById('num2');
     num1.value = 0;
     num2.value = 0;
+    calculateValue();
 
-    num1.addEventListener('keyup', test => {
+    num1.addEventListener('keyup', keypressed => {
+      calculateValue();
+    });
+
+    num2.addEventListener('keyup', keypressed => {
+      calculateValue();
+    });
+    function calculateValue() {
       let sum = document.getElementById('sum');
       let result = Number(num1.value) + Number(num2.value);
       if (Number.isNaN(result)) {
-        sum.innerHTML = `Cannot add`;
+        sum.innerText = `Cannot add`;
       } else {
-        sum.innerHTML = `${num1.value} + ${num2.value} = ${result}`;
+        sum.innerText = `${num1.value} + ${num2.value} = ${result}`;
       }
-    });
-
-    num2.addEventListener('keyup', event => {
-      let sum = document.getElementById('sum');
-      let result = Number(num1.value) + Number(num2.value);
-      if (Number.isNaN(result)) {
-        sum.innerHTML = `Cannot add`;
-      } else {
-        sum.innerHTML = `${num1.value} + ${num2.value} = ${result}`;
-      }
-    });
+    }
 
     // 7. Skills Event
     // When user selects a skill, create an alert with a message similar to:
@@ -214,10 +212,10 @@
     let oldColor = null;
     addEventListener("click", test => {
       for (i = 0; i < favoriteColor.length; i++) {
-        if(favoriteColor[i].checked){
-          if(oldColor === null){
+        if (favoriteColor[i].checked) {
+          if (oldColor === null) {
             oldColor = favoriteColor[i].value;
-          }else if(oldColor !== favoriteColor[i].value){
+          } else if (oldColor !== favoriteColor[i].value) {
             let newColor = favoriteColor[i].value;
             alert(`What? You don't like ${oldColor} anymore? You're choosing to switch to ${newColor} as your favorite color?`);
             oldColor = newColor;
@@ -229,9 +227,9 @@
       }
     });
 
-    function changeBackground(favoriteColor, selectedColor){
-      for(i = 0; i < favoriteColor.length; i++){
-        favoriteColor[i].style.color=`${selectedColor}`;
+    function changeBackground(favoriteColor, selectedColor) {
+      for (i = 0; i < favoriteColor.length; i++) {
+        favoriteColor[i].style.color = `${selectedColor}`;
       }
     }
 
@@ -239,17 +237,32 @@
     // When user hovers over an employees name:
     // 	Hide the name if shown.
     // 	Show the name if hidden.
+
     let empName = document.getElementsByClassName('empName');
-    console.log(empName[0].innerText)
+    let forLength = empName.length
+    for (i = 0; i < forLength; i++) {
+      let emp = empName[i];
+      emp.addEventListener("mouseover", mouseOver => {
+        if (emp.style.color === 'white') {
+          emp.style.color = 'black';
+        } else {
+          emp.style.color = 'white';
+        }
+      })
+    }
 
     // 10. Current Time
     // Regarding this element:
     // 	<h5 id="currentTime"></h5>
     // Show the current time in this element in this format: 9:05:23 AM
     // The time should be accurate to the second without having to reload the page.
-    let time = newDate();
     currentTime = document.getElementById('currentTime');
-    currentTime.innerText = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
+
+    setInterval(function () {
+      let time = new Date();
+      currentTime.innerText = time.getHours() + ":" + time.getMinutes() + ":" + time.getSeconds();
+    },
+      1000);
 
     // 11. Delay
     // Regarding this element:
