@@ -140,8 +140,8 @@
     // Find all checked options in the 'skills' select element.
     // Print the value and the contents.
     function getHobbies() {
-      let selection = document.getElementsByName('skills')
-      console.log(selection[0].selectedOptions[0].innerHTML)
+      let selection = document.getElementsByName('skills');
+      console.log(selection[0].selectedOptions[0].innerHTML);
     }
 
     // 5. Custom Attribute
@@ -151,7 +151,7 @@
     // Print the element that has the attribute.
     function getCustomAttribute() {
       document.querySelectorAll('[data-customAttr]').forEach(usaContents => {
-        console.log(usaContents.valueOf()) // or usaContents.getAttributeNames()
+        console.log(usaContents.valueOf()); // or usaContents.getAttributeNames()
         console.log(usaContents.tagName); // or usaContents.localName
       });
     }
@@ -219,7 +219,7 @@
             let newColor = favoriteColor[i].value;
             alert(`What? You don't like ${oldColor} anymore? You're choosing to switch to ${newColor} as your favorite color?`);
             oldColor = newColor;
-            changeBackground(favoriteColor, newColor)
+            changeBackground(favoriteColor, newColor);
           } else {
             oldColor = favoriteColor[i].value;
           }
@@ -268,12 +268,26 @@
     // Regarding this element:
     // 	<p id="helloWorld">Hello, World!</p>
     // Three seconds after a user clicks on this element, change the text to a random color.
+    let helloWorld = document.getElementById('helloWorld');
+    helloWorld.addEventListener("click", click => {
+      setTimeout(function() {getRandomColor()}, 3000); 
+    });
 
+    function getRandomColor() {
+      var letters = '0123456789ABCDEF';
+      var color = '#';
+      for (var i = 0; i < 6; i++) {
+        color += letters[Math.floor(Math.random() * 16)];
+      }
+      
+      helloWorld.style.color = color;
+    }
 
     // 12. Walk the DOM
     // Define function walkTheDOM(node, func)
     // This function should traverse every node in the DOM. Use recursion.
     // On each node, call func(node).
+    
   </script>
 
 </body>
