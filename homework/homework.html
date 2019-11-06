@@ -270,16 +270,14 @@
     // Three seconds after a user clicks on this element, change the text to a random color.
     let helloWorld = document.getElementById('helloWorld');
     helloWorld.addEventListener("click", click => {
-      setTimeout(function() {getRandomColor()}, 3000); 
+      setTimeout(function () { getRandomColor() }, 3000);
     });
 
     function getRandomColor() {
-      var letters = '0123456789ABCDEF';
-      var color = '#';
-      for (var i = 0; i < 6; i++) {
+      for (i = 0; i < 6; i++) {
         color += letters[Math.floor(Math.random() * 16)];
       }
-      
+
       helloWorld.style.color = color;
     }
 
@@ -287,7 +285,14 @@
     // Define function walkTheDOM(node, func)
     // This function should traverse every node in the DOM. Use recursion.
     // On each node, call func(node).
-    
+    let all = document.getElementsByTagName("*");
+    function walkTheDOM(node, func){
+      
+    }
+
+    for (i = 0, max = all.length; i < max; i++) {
+      console.log(all[i].valueOf())
+    }
   </script>
 
 </body>
