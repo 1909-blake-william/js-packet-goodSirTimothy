@@ -287,16 +287,12 @@
     // On each node, call func(node).
     function walkTheDOM(node, func) {
       node.childNodes.forEach(element =>{
-        func(element)
+        func(element);
         walkTheDOM(element, func);
       })
     }
 
     // walkTheDOM(document.childNodes, console.log);
-
-    // for (i = 0, max = all.length; i < max; i++) {
-    //   console.log(all[i].valueOf())
-    // }
   </script>
 
 </body>
