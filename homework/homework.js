@@ -11,7 +11,7 @@
 // Define function: fib(n)
 // Return the nth number in the fibonacci sequence.
 /**
- * 
+ * calculates fibonacci to the nth number
  * @param {*} n 
  */
 function fib(n) {
@@ -35,7 +35,7 @@ function fib(n) {
 // Use the bubble sort algorithm to sort the array.
 // Return the sorted array.
 /**
- * 
+ * simple bubble sort algorithm
  * @param {*} numArray 
  */
 function bubbleSort(numArray) {
@@ -56,7 +56,7 @@ function bubbleSort(numArray) {
 // Define function: reverseStr(someStr)
 // Reverse and return the String.
 /**
- * 
+ * simple reverse String
  * @param {*} someStr 
  */
 function reverseStr(someStr) {
@@ -72,18 +72,16 @@ function reverseStr(someStr) {
 // Define function: factorial(someNum)
 // Use recursion to compute and return the factorial of someNum.
 /**
- * 
+ * Factorial calculation with recursion
  * @param {*} someNum 
  */
 function factorial(someNum) {
     if (someNum <= 1) {
         return someNum;
     }
-    let result = 1;
-    for (i = 1; i <= someNum; i++) {
-        result = result * i;
+    else {
+        return factorial(someNum - 1) * someNum;
     }
-    return result;
 }
 
 
@@ -92,10 +90,10 @@ function factorial(someNum) {
 // Return the substring contained between offset and (offset + length) inclusively.
 // If incorrect input is entered, use the alert function and describe why the input was incorrect.
 /**
- * 
- * @param {*} someStr 
- * @param {*} length 
- * @param {*} offset 
+ * find a substring of a select string
+ * @param {*} someStr   input string
+ * @param {*} length    where to end the substring (cannot be larger then the string, or less then 0)
+ * @param {*} offset    where to start the substring (cannot be less then 0)
  */
 function substring(someStr, length, offset) {
     if (length > someStr.length) {
@@ -116,7 +114,7 @@ function substring(someStr, length, offset) {
 // Return true if even, false if odd.
 // Do not use % operator.
 /**
- * 
+ * subtract the number till it is 1 or 0 (odd or even)
  * @param {*} someNum 
  */
 function isEven(someNum) {
@@ -181,6 +179,7 @@ function isPalindrome(someStr) {
 // *****
 //  ***
 //   *
+
 /**
  * I have split this task into seperate functions depending on which shape to print
  * @param {*} shape = the shape meant to be printed
@@ -195,13 +194,8 @@ function printShape(shape, height, character) {
         // print out a Triangle
         console.log(printTriangle(height, character));
     } else if (shape === 'Diamond') {
-        // print out an error (since it is easier to display a diamond for an odd number)
-        if (height % 2 === 0) {
-            console.log('please input an odd number for a Diamond')
-        } else {
-            // print out a Diamond
-            console.log(printDiamond(height, character));
-        }
+        // print out a Diamond
+        console.log(printDiamond(height, character));
     } else {
         console.log('sorry, not a valid shape')
     }
